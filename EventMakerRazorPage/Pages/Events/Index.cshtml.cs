@@ -11,7 +11,7 @@ namespace RazorPagesEventMaker.Pages.Events
 
         public IndexModel()
         {
-            repo = new FakeEventRepository();
+            repo = FakeEventRepository.Instance;
         }
         public void OnGet()
         {

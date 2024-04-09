@@ -3,7 +3,8 @@
     public class FakeEventRepository
     {
         private List<Event> events { get; }
-        public FakeEventRepository() 
+        private static FakeEventRepository _instance;
+        private FakeEventRepository() 
         {
             events = new List<Event>();
             events.Add(new Event() { Id = 1, Name = "Roskilde Festival", Description= "A lot of music", City = "Roskilde", DateTime = new DateTime(2020, 6 , 9, 10, 0, 0)});
@@ -11,6 +12,18 @@
             events.Add(new Event() { Id = 3, Name = "CPH Distortion", Description = "A lot of beers", City = "Copenhagen", DateTime = new DateTime(2019, 6, 4, 14, 0, 0) });
             events.Add(new Event() { Id = 4, Name = "Demo Day", Description = "Project Presentation", City = "Roskilde", DateTime = new DateTime(2020, 6, 9, 9, 0, 0) });
             events.Add(new Event() { Id = 5, Name = "VM Daminton", Description = "Badminton", City = "Århus", DateTime = new DateTime(2020, 10, 3, 16, 0, 0) });
+        }
+        public static FakeEventRepository Instance
+        {
+            get 
+            {
+                if (_instance == null)
+                {
+                    _instance = new FakeEventRepository();
+                }
+                return _instance; 
+            }
+
         }
         public List<Event> GetAllEvents()
         {

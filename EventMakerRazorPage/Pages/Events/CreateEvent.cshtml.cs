@@ -12,7 +12,7 @@ namespace RazorPagesEventMaker.Pages.Events
         public Event Event { get; set; }
         public CreateEventModel()
         {
-            repo = new FakeEventRepository();
+            repo = FakeEventRepository.Instance;
         }
         public IActionResult OnGet()
         {
@@ -20,6 +20,10 @@ namespace RazorPagesEventMaker.Pages.Events
         }
         public IActionResult OnPost()
         {
+            if (!ModelState.IsValid)
+            {
+                return Page();
+            }
             repo.AddEvent(Event);
             return RedirectToPage("Index");
         }
