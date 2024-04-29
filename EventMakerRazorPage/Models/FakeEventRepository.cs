@@ -3,7 +3,9 @@
     public class FakeEventRepository
     {
         private List<Event> events { get; }
+
         private static FakeEventRepository _instance;
+
         private FakeEventRepository() 
         {
             events = new List<Event>();
@@ -11,8 +13,9 @@
             events.Add(new Event() { Id = 2, Name = "CPH Marathon", Description = "Many Marathon runners", City = "Copenhagen", DateTime = new DateTime(2020, 3, 6, 9, 30, 0) });
             events.Add(new Event() { Id = 3, Name = "CPH Distortion", Description = "A lot of beers", City = "Copenhagen", DateTime = new DateTime(2019, 6, 4, 14, 0, 0) });
             events.Add(new Event() { Id = 4, Name = "Demo Day", Description = "Project Presentation", City = "Roskilde", DateTime = new DateTime(2020, 6, 9, 9, 0, 0) });
-            events.Add(new Event() { Id = 5, Name = "VM Daminton", Description = "Badminton", City = "Århus", DateTime = new DateTime(2020, 10, 3, 16, 0, 0) });
+            events.Add(new Event() { Id = 5, Name = "VM Badminton", Description = "Badminton", City = "Århus", DateTime = new DateTime(2020, 10, 3, 16, 0, 0) });
         }
+
         public static FakeEventRepository Instance
         {
             get 
@@ -25,14 +28,16 @@
             }
 
         }
+
         public List<Event> GetAllEvents()
         {
             return events.ToList();
         }
+
         public void AddEvent(Event ev)
         {
             List<int> eventIds = new List<int>();
-            foreach (var evt in events) 
+            foreach (Event evt in events) 
             {
                 eventIds.Add(evt.Id);
             }
@@ -46,6 +51,35 @@
                 ev.Id = 1;
             }
             events.Add (ev);
+        }
+
+        public Event GetEvent(int id)
+        {
+            foreach (Event toBeEdittedEvent in GetAllEvents())
+            {
+                if (toBeEdittedEvent.Id == id)
+                    return toBeEdittedEvent;
+            }
+
+            return new Event();
+        }
+
+        public void UpdateEvent(Event @evt)
+        {
+            if (@evt != null)
+            {
+                foreach (Event existingEvent in GetAllEvents())
+                {
+                    if (existingEvent.Id == @evt.Id)
+                    {
+                        existingEvent.Id = evt.Id;
+                        existingEvent.Name = evt.Name;
+                        existingEvent.City = evt.City;
+                        existingEvent.Description = evt.Description;
+                        existingEvent.DateTime = evt.DateTime;
+                    }
+                }
+            }
         }
     }
 }
