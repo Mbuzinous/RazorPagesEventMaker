@@ -1,20 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPagesEventMaker.Interfaces;
 using RazorPagesEventMaker.Models;
+using RazorPagesEventMaker.Services;
 
 namespace RazorPagesEventMaker.Pages.Events
 {
     public class CreateEventModel : PageModel
     {
-        private FakeEventRepository repo;
+        IEventRepository repo;
 
         [BindProperty]
         public Event Event { get; set; }
 
-        public CreateEventModel()
+        public CreateEventModel(IEventRepository repository)
         {
-            repo = FakeEventRepository.Instance;
+            repo = repository;
         }
 
         public IActionResult OnGet()

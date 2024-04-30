@@ -1,19 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
+using RazorPagesEventMaker.Interfaces;
 using RazorPagesEventMaker.Models;
+using RazorPagesEventMaker.Services;
 
 namespace RazorPagesEventMaker.Pages.Events
 {
     public class EditEventModel : PageModel
     {
-        private FakeEventRepository repo;
+         IEventRepository repo;
 
         [BindProperty]
         public Event Event { get; set; }
 
-        public EditEventModel()
+        public EditEventModel(IEventRepository repository)
         {
-            repo = FakeEventRepository.Instance;
+            repo = repository;
         }
 
         public IActionResult OnGet(int id)

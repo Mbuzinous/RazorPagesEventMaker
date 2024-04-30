@@ -1,3 +1,6 @@
+using RazorPagesEventMaker.Interfaces;
+using RazorPagesEventMaker.Services;
+
 namespace EventMakerRazorPage
 {
     public class Program
@@ -8,6 +11,8 @@ namespace EventMakerRazorPage
 
             // Add services to the container.
             builder.Services.AddRazorPages();
+            //builder.Services.AddSingleton<IEventRepository, FakeEventRepository>();
+            builder.Services.AddTransient<IEventRepository, JsonEventRepository>();
 
             var app = builder.Build();
 

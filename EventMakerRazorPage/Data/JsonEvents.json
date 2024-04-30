@@ -1,0 +1,30 @@
+[
+  {
+    "Id": 1,
+    "Name": "Roskilde Festival dddddddd",
+    "Description": "A lot of music",
+    "City": "Roskilde",
+    "DateTime": "2024-04-30T00:00:00"
+  },
+  {
+    "Id": 2,
+    "Name": "CPH Marathon",
+    "Description": "Runners from other countries",
+    "City": "Copenhagen",
+    "DateTime": "2020-10-25T08:55:00"
+  },
+  {
+    "Id": 3,
+    "Name": "Zealand Zoo",
+    "Description": "Fredags cafe p\u00E5 Zealand roskilde",
+    "City": "Roskilde",
+    "DateTime": "2024-04-30T23:08:00"
+  },
+  {
+    "Id": 4,
+    "Name": "Roskilde Festival dddddddd",
+    "Description": "A lot of music and beer",
+    "City": "Roskilde",
+    "DateTime": "2024-04-30T23:12:00"
+  }
+]
