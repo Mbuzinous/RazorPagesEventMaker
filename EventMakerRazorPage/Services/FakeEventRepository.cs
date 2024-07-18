@@ -73,7 +73,6 @@ namespace RazorPagesEventMaker.Services
         public List<Event> FilterEvents(string city)
         {
             List<Event> filteredList = new List<Event>();
-
             foreach (Event ev in events)
             {
                 if (ev.City.Contains(city))
@@ -93,6 +92,7 @@ namespace RazorPagesEventMaker.Services
                 int c = events.FindIndex(a => a.Id == id);
                 events.RemoveAt(events.FindIndex(a => a.Id == id));
             }
+
         }
     }
 }
